@@ -49,8 +49,8 @@
         }
         input[type="text"],
         input[type="email"],
-        input[type="password"],
-        input[type="date"] {
+        input[type="telefono"]
+         {
             width: 100%;
             font-family: 'Courier New', Courier, monospace;
             font-size: 1em;
@@ -97,7 +97,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Registro de usuarios</h1>
+        <h1>Contactenos</h1>
         <div class="form-box">
             <h2>Sus datos.</h2>
             <form id="registerForm" novalidate>
@@ -105,22 +105,13 @@
                 <input type="text" id="username" name="username" required minlength="10" maxlength="20" autocomplete="off">
                 <div class="error" id="usernameError"></div>
 
-                <label for="birthday">Fecha de cumpleaños:</label>
-                <input type="date" id="birthday" name="birthday" max="" autocomplete="off">
-                <div class="error" id="birthdayError"></div>
-
                 <label for="email">*Correo electrónico:</label>
-                <input type="email" id="email" name="email" required autocomplete="off">
+                <input type="email" id="email" name="email" required autocomplete="on">
                 <div class="error" id="emailError"></div>
-
-                <label for="password">*Contraseña:</label>
-                <input type="password" id="password" name="password" required minlength="9" autocomplete="off">
-                <div class="error" id="passwordError"></div>
-
-                <label for="confirmPassword">*Confirmar contraseña:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required minlength="9" autocomplete="off">
-                <div class="error" id="confirmPasswordError"></div>
-
+                
+                <label for="telefono" name="telefono">agregue telefono</label>
+                <input type="telefono" id="telefono" name="telefono" required autocomplete="on" >
+                <div class="error" id="telefonoError"></div>
                 <label class="checkbox-label">
                     <input type="checkbox" id="terms" name="terms" required>
                     *Acepto términos y condiciones
@@ -132,32 +123,23 @@
         </div>
     </div>
     <script>
-        // Calcular el máximo para la fecha de cumpleaños (hoy - 0 años, y mínimo hoy - 125 años)
-        const birthdayInput = document.getElementById('birthday');
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const dd = String(today.getDate()).padStart(2, '0');
-        const maxDate = `${yyyy}-${mm}-${dd}`;
-        const minDate = `${yyyy - 125}-${mm}-${dd}`;
-        birthdayInput.max = maxDate;
-        birthdayInput.min = minDate;
+       
 
-        // Validaciones personalizadas
+       
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             let valid = true;
 
-            // Limpiar mensajes previos
+            
             document.querySelectorAll('.error').forEach(el => el.textContent = '');
 
-            // Nombre de usuario
+            
             const username = document.getElementById('username').value.trim();
             if (username.length < 10 || username.length > 20) {
                 document.getElementById('usernameError').textContent = 'Debe tener entre 10 y 20 caracteres.';
                 valid = false;
             }
 
-            // Fecha de cumpleaños (opcional, pero si se ingresa, debe estar en rango)
+
             const birthday = document.getElementById('birthday').value;
             if (birthday) {
                 const bDate = new Date(birthday);
@@ -171,13 +153,13 @@
                 }
             }
 
-            // Correo electrónico
+        
             const email = document.getElementById('email').value.trim();
             if (!email) {
                 document.getElementById('emailError').textContent = 'Este campo es obligatorio.';
                 valid = false;
             } else {
-                // Simple email validation
+                
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     document.getElementById('emailError').textContent = 'Correo no válido.';
@@ -185,14 +167,14 @@
                 }
             }
 
-            // Contraseña
+            
             const password = document.getElementById('password').value;
             if (password.length < 9) {
                 document.getElementById('passwordError').textContent = 'Debe tener más de 8 caracteres.';
                 valid = false;
             }
 
-            // Confirmar contraseña
+            
             const confirmPassword = document.getElementById('confirmPassword').value;
             if (confirmPassword.length < 9) {
                 document.getElementById('confirmPasswordError').textContent = 'Debe tener más de 8 caracteres.';
@@ -202,7 +184,7 @@
                 valid = false;
             }
 
-            // Términos y condiciones
+            
             const terms = document.getElementById('terms').checked;
             if (!terms) {
                 document.getElementById('termsError').textContent = 'Debe aceptar los términos.';
