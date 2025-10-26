@@ -32,12 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombre = document.getElementById("nombre").value.trim();
     const email = document.getElementById("email").value.trim();
     const telefono = document.getElementById("telefono").value.trim();
+    const telregex = /^\d{8,15}$/;
     const mensaje = document.getElementById("mensaje").value.trim();
-
+    
     const errores = [];
     const resultado = document.getElementById("resultado");
     resultado.innerHTML = "";
-
+    document.getElementById('telefonoError').textContent ="";
+    if(!telefono){
+      document.getElementById('telefonoError').textContent = "el telefono es obligatorio";
+      valid = false;
+    }else if(!telregex.test(telefono)){
+      document.getElementById('telefonoError') = 'numero no valido. porfavor asegurarse de escribirlo bien';
+      valid = false;
+    }
     if (nombre === "" || nombre.length > 50)
       errores.push("⚠ El nombre es obligatorio y debe tener menos de 50 caracteres.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))

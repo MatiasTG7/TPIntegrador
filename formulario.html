@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Regritro</title>
+    <title>Registro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -49,7 +49,7 @@
         }
         input[type="text"],
         input[type="email"],
-        input[type="telefono"]
+        input[type="tel"]
          {
             width: 100%;
             font-family: 'Courier New', Courier, monospace;
@@ -109,9 +109,10 @@
                 <input type="email" id="email" name="email" required autocomplete="on">
                 <div class="error" id="emailError"></div>
                 
-                <label for="telefono" name="telefono">agregue telefono</label>
-                <input type="telefono" id="telefono" name="telefono" required autocomplete="on" >
+                <label for="telefono" name="telefono">*agregue telefono</label>
+                <input type="tel" id="telefono" name="telefono" required autocomplete="on" pattern="[0-10]{8,15}">
                 <div class="error" id="telefonoError"></div>
+
                 <label class="checkbox-label">
                     <input type="checkbox" id="terms" name="terms" required>
                     *Acepto términos y condiciones
@@ -138,20 +139,8 @@
                 document.getElementById('usernameError').textContent = 'Debe tener entre 10 y 20 caracteres.';
                 valid = false;
             }
+        }
 
-
-            const birthday = document.getElementById('birthday').value;
-            if (birthday) {
-                const bDate = new Date(birthday);
-                if (bDate > today) {
-                    document.getElementById('birthdayError').textContent = 'No puede ser mayor a hoy.';
-                    valid = false;
-                }
-                if (bDate < new Date(minDate)) {
-                    document.getElementById('birthdayError').textContent = 'No puede tener más de 125 años.';
-                    valid = false;
-                }
-            }
 
         
             const email = document.getElementById('email').value.trim();
@@ -166,32 +155,13 @@
                     valid = false;
                 }
             }
-
-            
-            const password = document.getElementById('password').value;
-            if (password.length < 9) {
-                document.getElementById('passwordError').textContent = 'Debe tener más de 8 caracteres.';
-                valid = false;
-            }
-
-            
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            if (confirmPassword.length < 9) {
-                document.getElementById('confirmPasswordError').textContent = 'Debe tener más de 8 caracteres.';
-                valid = false;
-            } else if (confirmPassword !== password) {
-                document.getElementById('confirmPasswordError').textContent = 'Las contraseñas no coinciden.';
-                valid = false;
-            }
-
-            
+          
             const terms = document.getElementById('terms').checked;
             if (!terms) {
                 document.getElementById('termsError').textContent = 'Debe aceptar los términos.';
                 valid = false;
-            }
-
-            if (!valid) e.preventDefault();
+            
+             } if (!valid) {e.preventDefault();
         });
     </script>
 </body>
