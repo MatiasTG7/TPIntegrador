@@ -2,132 +2,133 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro</title>
+    <title>Contacto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            background: #8b8484;
-            color: #000;
+    <link rel="stylesheet" href="style.css">
+    <style>        main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alineación al inicio del contenedor */
+            min-height: 80vh; /* Para que se vea centrado verticalmente */
+            padding-top: 50px;
         }
-        .container {
-            max-width: 420px;
-            margin: 40px auto;
-            background: #ededed;
-            border-radius: 12px;
-            border: 3px solid #000000;
-            box-shadow: 2px 2px 10px #000000;
-            padding: 0 0 20px 0;
-        }
-        .container h1 {
-            font-size: 2.2em;
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 24px 24px 0 24px;
-            font-weight: bold;
-        }
+
         .form-box {
-            margin: 0 24px;
-            border: 2px solid #000000;
+            background-color: white;
+            padding: 30px;
             border-radius: 10px;
-            background: #ffffff;
-            padding: 18px 20px 20px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
         }
+        
         .form-box h2 {
-            font-size: 1.4em;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            margin-bottom: 16px;
-            margin-top: 0;
+            text-align: center;
+            color: #0a84ff;
         }
-        label {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.08em;
+
+        .error {
+            color: #e53935; /* Rojo */
+            font-size: 0.9em;
+            margin-top: -5px;
+            margin-bottom: 10px;
             display: block;
-            margin-bottom: 6px;
         }
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"]
-         {
+
+        input[type="text"], input[type="email"], input[type="tel"] {
             width: 100%;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1em;
-            padding: 6px 10px;
-            margin-bottom: 14px;
-            border: 2px solid #000000;
-            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             box-sizing: border-box;
-            background: #ffffff;
         }
-        input[type="checkbox"] {
-            margin-right: 7px;
-            transform: scale(1.2);
-        }
+
         .checkbox-label {
-            display: inline-block;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1em;
-            vertical-align: middle;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
+        
+        .checkbox-label input {
+            margin-right: 8px;
+        }
+
         .submit-btn {
-            margin-top: 14px;
-            width: 100%;
-            background: #222;
-            color: #fff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.05em;
+            background-color: #0a84ff;
+            color: white;
+            padding: 10px;
             border: none;
             border-radius: 5px;
-            padding: 8px 0;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background-color 0.2s;
         }
+
         .submit-btn:hover {
-            background: #555555;
+            background-color: #0066cc;
         }
-        .error {
-            color: #c00;
-            font-size: 0.98em;
-            padding: 0;
-            margin: -10px 0 10px 0;
+        
+        #success-message {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #e8f5e9;
+            color: #1b5e20;
+        }
+        #success-message ul {
+            padding-left: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Contactenos</h1>
+    <header>
+        <h1>Contacto Directo</h1>
+    </header>
+
+    <nav>
+        <a href="principal.html">Principal</a>
+        <a href="Producto.html">Productos</a>
+        <a href="formulario.html">Contacto</a>
+    </nav>
+
+    <main>
         <div class="form-box">
-            <h2>Sus datos.</h2>
-            <form id="registerForm" novalidate>
+            <h2>Formulario de Contacto</h2>
+            <form id="contactForm" novalidate>
+                
                 <label for="username">*Nombre de usuario:</label>
-                <input type="text" id="username" name="username" required minlength="10" maxlength="20" autocomplete="off">
+                <input type="text" id="username" name="username" required minlength="4" maxlength="30" autocomplete="off">
                 <div class="error" id="usernameError"></div>
 
+                
                 <label for="email">*Correo electrónico:</label>
                 <input type="email" id="email" name="email" required autocomplete="on">
                 <div class="error" id="emailError"></div>
                 
-                <label for="telefono" name="telefono">*agregue telefono</label>
-                <input type="tel" id="telefono" name="telefono" required autocomplete="on" pattern="[0-10]{8,15}">
+                
+                <label for="telefono">*Teléfono de contacto:</label>
+                <input type="tel" id="telefono" name="telefono" required autocomplete="on">
                 <div class="error" id="telefonoError"></div>
-
+                
                 <label class="checkbox-label">
                     <input type="checkbox" id="terms" name="terms" required>
                     *Acepto términos y condiciones
                 </label>
                 <div class="error" id="termsError"></div>
 
-                <button type="submit" class="submit-btn">Registrarse</button>
+                <button type="submit" class="submit-btn">Enviar Contacto</button>
             </form>
         </div>
-    </div>
-    <script>
-       
+    </main>
 
-       
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+    <footer>
+        <p>&copy; 2025 Tienda de Celulares - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
             let valid = true;
 
             
@@ -135,34 +136,93 @@
 
             
             const username = document.getElementById('username').value.trim();
-            if (username.length < 10 || username.length > 20) {
-                document.getElementById('usernameError').textContent = 'Debe tener entre 10 y 20 caracteres.';
+            if (username.length < 4 || username.length > 30) {
+                document.getElementById('usernameError').textContent = 'El nombre debe tener entre 4 y 30 caracteres.';
+                valid = false;
+            } else if (!username) { 
+                document.getElementById('usernameError').textContent = 'Este campo es obligatorio.';
                 valid = false;
             }
-        }
 
-
-        
+            
             const email = document.getElementById('email').value.trim();
-            if (!email) {
-                document.getElementById('emailError').textContent = 'Este campo es obligatorio.';
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) { 
+                document.getElementById('emailError').textContent = 'El correo es obligatorio.';
                 valid = false;
-            } else {
-                
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    document.getElementById('emailError').textContent = 'Correo no válido.';
-                    valid = false;
-                }
+            } else if (!emailRegex.test(email)) { 
+                document.getElementById('emailError').textContent = 'Formato de correo no válido (ejemplo@dominio.cl).';
+                valid = false;
             }
-          
+            
+            
+            const telefono = document.getElementById('telefono').value.trim();
+            
+            const telefonoRegex = /^\d{8,15}$/; 
+            if (!telefono) { 
+                document.getElementById('telefonoError').textContent = 'El teléfono es obligatorio.';
+                valid = false;
+            } else if (!telefonoRegex.test(telefono)) { 
+                document.getElementById('telefonoError').textContent = 'Número no válido. Debe contener solo 8 a 15 dígitos numéricos.';
+                valid = false;
+            }
+
             const terms = document.getElementById('terms').checked;
             if (!terms) {
-                document.getElementById('termsError').textContent = 'Debe aceptar los términos.';
+                document.getElementById('termsError').textContent = 'Debe aceptar los términos y condiciones.';
                 valid = false;
-            
-             } if (!valid) {e.preventDefault();
+            }
+
+            if (valid) {
+                mostrarDatosEnviados(username, email, telefono);
+                document.getElementById('contactForm').reset();
+            } 
         });
+
+        
+        function mostrarDatosEnviados(username, email, telefono) {
+            // Eliminar mensaje anterior si existe
+            const existingMessage = document.getElementById('success-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            const mainContainer = document.querySelector('main');
+            
+            
+            const successDiv = document.createElement('div');
+            successDiv.id = 'success-message';
+            
+            
+            const title = document.createElement('h3');
+            title.textContent = '¡Mensaje Enviado Exitosamente!';
+            successDiv.appendChild(title);
+            
+            
+            const p = document.createElement('p');
+            p.textContent = 'Sus datos de contacto han sido recibidos:';
+            successDiv.appendChild(p);
+
+            const ul = document.createElement('ul');
+            
+            const data = [
+                `Nombre: ${username}`,
+                `Email: ${email}`,
+                `Teléfono: ${telefono}`
+            ];
+            
+            data.forEach(itemText => {
+                const li = document.createElement('li');
+                li.textContent = itemText;
+                ul.appendChild(li);
+            });
+            
+            successDiv.appendChild(ul);
+            
+           
+            const formBox = document.querySelector('.form-box');
+            mainContainer.insertBefore(successDiv, formBox.nextSibling);
+        }
     </script>
 </body>
 </html>
