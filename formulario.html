@@ -8,8 +8,7 @@
     <style>        main {
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alineación al inicio del contenedor */
-            min-height: 80vh; /* Para que se vea centrado verticalmente */
+            min-height: 80vh; 
             padding-top: 50px;
         }
 
@@ -28,7 +27,7 @@
         }
 
         .error {
-            color: #e53935; /* Rojo */
+            color: #e53935;
             font-size: 0.9em;
             margin-top: -5px;
             margin-bottom: 10px;
@@ -181,7 +180,7 @@
 
         
         function mostrarDatosEnviados(username, email, telefono) {
-            // Eliminar mensaje anterior si existe
+           
             const existingMessage = document.getElementById('success-message');
             if (existingMessage) {
                 existingMessage.remove();
