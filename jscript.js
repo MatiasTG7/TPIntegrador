@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const telregex = /^\d{8,15}$/;
     const mensaje = document.getElementById("mensaje").value.trim();
     
-    let valid = true; // Variable necesaria para la lógica posterior
+    let valid = true; 
     const errores = [];
     const resultado = document.getElementById("resultado");
     resultado.innerHTML = "";
@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('telefonoError').textContent = "el telefono es obligatorio";
       valid = false;
     }else if(!telregex.test(telefono)){
-      // CORRECCIÓN: Usar .textContent en lugar de asignar directamente al elemento
       document.getElementById('telefonoError').textContent = 'numero no valido. porfavor asegurarse de escribirlo bien'; 
       valid = false;
     }
@@ -57,8 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mensaje === "")
       errores.push("⚠ El mensaje no puede estar vacío.");
 
-    // Se mantiene la validación original del formulario, aunque es redundante con el script inline de formulario.html
-    // Para simplificar, he retirado la validación duplicada de telefono y dejo la más genérica que parece ser la que usa tu formulario.html
+
     if (errores.length > 0) {
       errores.forEach(err => {
         const p = document.createElement("p");
