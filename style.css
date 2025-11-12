@@ -6,8 +6,9 @@ body {
   padding: 0;
 }
 
+
 header {
-  background-color: #1e1e2f;
+  background-color: #0a84ff;
   color: white;
   padding: 20px;
   text-align: center;
@@ -16,7 +17,7 @@ header {
 nav {
   display: flex;
   justify-content: center;
-  background-color: #2c2c3e;
+  background-color: #222;
   flex-wrap: wrap;
 }
 
@@ -24,88 +25,27 @@ nav a {
   color: white;
   padding: 15px 25px;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 nav a:hover {
-  background-color: #57576d;
+  background-color: #0a84ff;
 }
 
-.galeria-destacada {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 30px 20px;
-    background-color: white;
-    margin: 30px auto;
-    max-width: 900px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+.carrousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 30px 0;
 }
 
-.producto-destacado {
-    text-align: center;
-    width: 30%;
-    max-width: 250px;
+.carrousel-container img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
-
-.producto-destacado img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: contain;
-    border-radius: 5px;
-}
-
-.producto-destacado p {
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #333;
-}
-
-.botones-estaticos {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.boton-productos, .boton-contacto {
-    padding: 10px 20px;
-    margin: 0 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.2s;
-}
-
-.boton-productos {
-    background-color: #57576d;
-    color: white;
-}
-
-.boton-productos:hover {
-    background-color: #4a4a5e;
-}
-
-.boton-contacto {
-    background-color: #1e1e2f;
-    color: white;
-}
-
-.boton-contacto:hover {
-    background-color: #333;
-}
-
-@media (max-width: 768px) {
-    .galeria-destacada {
-        flex-direction: column;
-        align-items: center;
-    }
-    .producto-destacado {
-        width: 80%;
-    }
-}
-
 
 .contenedor-productos {
   display: flex;
@@ -164,9 +104,9 @@ button:hover {
 
 
 footer {
-  background-color: #1e1e2f;
+  background-color: #222;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   margin-top: 30px;
 }

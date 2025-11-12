@@ -4,7 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Celulares - Página Principal</title>
-    <link rel="stylesheet" href="style.css"> 
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        header {
+            background-color: #1e1e2f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #2c2c3e;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            background-color: #57576d;
+        }
+
+        .carrusel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 30px auto;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .carrusel img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .botones {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            background-color: #1e1e2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #57576d;
+        }
+
+        footer {
+            background-color: #1e1e2f;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,29 +94,37 @@
         <a href="formulario.html">Contacto</a>
     </nav>
 
-    <main class="galeria-destacada">
-        <div class="producto-destacado">
-            <img src="xiaomi.jpeg" alt="Xiaomi Redmi Note 13 Pro+">
-            <p><strong>Xiaomi Redmi Note 13 Pro+</strong></p>
+    <section class="carrusel">
+        <img id="imagen" src="apple.jpeg" alt="celular apple">
+        <div class="botones">
+            <button onclick="anterior()">Anterior</button>
+            <button onclick="siguiente()">Siguiente</button>
         </div>
-        <div class="producto-destacado">
-            <img src="apple.jpeg" alt="Apple iPhone 15 Pro Max">
-            <p><strong>Apple iPhone 15 Pro Max</strong></p>
-        </div>
-        <div class="producto-destacado">
-            <img src="samsung.jpeg" alt="Samsung Galaxy Z Flip 5">
-            <p><strong>Samsung Galaxy Z Flip 5</strong></p>
-        </div>
-    </main>
-    
-    <div class="botones-estaticos">
-        <a href="Producto.html" class="boton-productos">Ver Productos</a>
-        <a href="formulario.html" class="boton-contacto">Contactar</a>
-    </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 Tienda de Celulares - Todos los derechos reservados.</p>
     </footer>
 
+    <script>
+        const imagenes = ["apple.jpeg", "xiaomi.jpeg", "samsung.jpeg"];
+        let indice = 0;
+
+        function mostrarImagen() {
+            document.getElementById("imagen").src = imagenes[indice];
+        }
+
+        function siguiente() {
+            indice = (indice + 1) % imagenes.length;
+            mostrarImagen();
+        }
+
+        function anterior() {
+            indice = (indice - 1 + imagenes.length) % imagenes.length;
+            mostrarImagen();
+        }
+
+        setInterval(siguiente, 1500);
+    </script>
 </body>
 </html>
